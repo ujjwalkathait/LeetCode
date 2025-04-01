@@ -7,9 +7,7 @@ public:
         if(dp[i] != -1){
             return dp[i];
         }
-        long long take = q[i][0] + solve(q, i+q[i][1]+1, n, dp);
-        long long notTake = solve(q, i+1, n, dp);
-        return dp[i] = max(take, notTake);
+        return dp[i] = max(q[i][0] + solve(q, i+q[i][1]+1, n, dp), solve(q, i+1, n, dp));
     }
     long long mostPoints(vector<vector<int>>& questions) {
         int n = questions.size();
