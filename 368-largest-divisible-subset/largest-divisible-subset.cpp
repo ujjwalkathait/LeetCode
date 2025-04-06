@@ -2,30 +2,29 @@ class Solution {
 public:
     void solve(int i, vector<int> &nums, vector<int> &ans, vector<int> &temp, int prev){
         if(i >= nums.size()){
-            if(temp.size() > ans.size()){
+            if(ans.size() < temp.size()){
                 ans = temp;
             }
             return;
         }
-
         if(prev == -1 || nums[i] % nums[prev] == 0){
             temp.push_back(nums[i]);
             solve(i+1, nums, ans, temp, i);
             temp.pop_back();
         }
-        solve(i+1, nums, ans, temp, prev);
+        solve(i+1, nums,ans, temp, prev);
     }
     vector<int> largestDivisibleSubset(vector<int>& nums) {
         int n = nums.size();
-        if(n <= 1){
+        sort(nums.begin(), nums.end());
+        if( n <= 1){
             return nums;
         }
-        sort(nums.begin(), nums.end());
         // vector<int> ans;
         // vector<int> temp;
-        // solve(0, nums, ans, temp, -1);
+        // int prev = -1;
 
-        // return ans;
+        // solve(0, nums, ans, temp, prev);
 
         vector<int> dp(n+1, 1);
         vector<int> prev(n+1, -1);
