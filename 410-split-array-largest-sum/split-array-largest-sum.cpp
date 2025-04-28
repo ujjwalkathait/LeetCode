@@ -20,16 +20,18 @@ public:
             h += nums[i];
         }
         int mid = l + (h-l)/2;
+        int ans = 0;
         while(l <= h){
             int cnt = solve(nums, mid);
             if(cnt > k){
                 l = mid + 1;
             }
             else{
+                ans = mid;
                 h = mid-1;
             }
             mid = l + (h-l)/2;
         }
-        return l;
+        return ans;
     }
 };
