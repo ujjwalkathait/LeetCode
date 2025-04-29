@@ -7,10 +7,10 @@ public:
         }
         long long left = 0,right = 0,ans = 0, count = 0;
         while(right<nums.size()){
-            if(nums[right] == maxi)count++;
+            if(nums[right] == maxi)k--;
             
-            while(count>=k){
-                if(nums[left]==maxi)count--;
+            while(!k){
+                if(nums[left]==maxi)k++;
                 left++;
                 ans += nums.size()-right;
             }    
