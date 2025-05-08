@@ -23,10 +23,10 @@ public:
                 int ny = y + dir.second;
 
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
-                    int waitTime = max(currentTime + 1, moveTime[nx][ny]);
-                    if ((waitTime - moveTime[nx][ny]) <= 1 && moveTime[nx][ny] >= (currentTime + 1)) {
-                        waitTime++;
-                    }
+                    int waitTime = max(currentTime + 1, moveTime[nx][ny]+1);
+                    // if ((waitTime - moveTime[nx][ny]) <= 1 && moveTime[nx][ny] >= (currentTime + 1)) {
+                    //     waitTime++;
+                    // }
 
                     if (waitTime < minTime[nx][ny]) {
                         minTime[nx][ny] = waitTime;
