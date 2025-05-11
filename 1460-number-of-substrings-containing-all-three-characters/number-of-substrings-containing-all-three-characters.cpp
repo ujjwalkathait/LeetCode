@@ -1,19 +1,13 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        unordered_map<char, int> mp;
-        int l = 0, r = 0, cnt = 0;
-        while(r < s.size()){
-            mp[s[r]]++;
-            while(mp.size() == 3){
-                cnt += s.size() - r;
-                mp[s[l]]--;
-                if(mp[s[l]] == 0){
-                    mp.erase(s[l]);
-                }
-                l++;
+        int cnt = 0;
+        int mp[3] = {-1, -1, -1};
+        for(int i=0; i<s.size(); i++){
+            mp[s[i] - 'a'] = i;
+            if(mp[0] != -1 && mp[1] != -1 && mp[2] != -1){
+                cnt += 1 + min({mp[0], mp[1], mp[2]});
             }
-            r++;
         }
         return cnt;
     }
