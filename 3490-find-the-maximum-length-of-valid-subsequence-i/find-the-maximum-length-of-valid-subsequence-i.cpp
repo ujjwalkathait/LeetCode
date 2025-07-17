@@ -45,15 +45,15 @@ public:
         // cout<<res;
         // return max({even, odd, res});
 
-        int evenCnt = 0, oddCnt = 0;
-        for(int i=0; i<n; i++){
-            if(nums[i] % 2 == 0){
-                evenCnt = max(evenCnt , oddCnt+1);
-            }
-            else{
-                oddCnt = max(oddCnt, evenCnt+1);
+        int parity = nums[0]%2;
+        int ans = 1;
+        for(int i=1; i<n; i++){
+            int curr = nums[i]%2;
+            if(curr != parity){
+                ans++;
+                parity = curr;
             }
         }
-        return max({even, odd, evenCnt, oddCnt});
+        return max({even, odd, ans});
     }
 };
