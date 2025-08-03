@@ -19,7 +19,7 @@ public:
         for(int x = 0; x <= k/2; x++){
             int xi = startPos - x;
             int yi = startPos + k - 2 * x;
-            if(yi > maxi) yi=maxi;
+            if(yi > maxi) yi = maxi;
 
             if(xi <= yi){
                 ans = max(ans, arr[yi] - (xi > 0 ? arr[xi - 1] : 0));
