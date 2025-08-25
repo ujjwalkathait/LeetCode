@@ -7,19 +7,20 @@ public:
         int total = m * n;
         int row = 0;
         int col = 0;
+        int dir = 0;
         for(int i=0; i<total; i++){
             ans.push_back(mat[row][col]);
-            if((row + col) % 2 == 0){
-                if(col == n-1) row++;
-                else if(row == 0) col++;
+            if(dir == 0){
+                if(col == n-1){row++; dir = 1-dir; }
+                else if(row == 0){ col++; dir = 1-dir;}
                 else{
                     row--;
                     col++;
                 }
             }
             else{
-                if(row == m-1) col++;
-                else if(col == 0) row++;
+                if(row == m-1) { col++; dir = 1-dir;}
+                else if(col == 0) {row++; dir = 1-dir;}
                 else{
                     row++;
                     col--;
