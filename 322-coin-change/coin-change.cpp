@@ -22,7 +22,6 @@ public:
         // if(ans >= 1e8) return -1;
         // return ans;
         vector<int> prev(amount+1, 0);
-        vector<int> curr(amount+1, 0);
         for(int i=0; i<=amount; i++){
             if(i % coins[0] == 0) prev[i] = i / coins[0];
             else prev[i] = 1e8;
@@ -36,7 +35,6 @@ public:
                 }
                 prev[j] = min(take, notTake);
             }
-            // prev = curr;
         }
         int ans = prev[amount];
         if(ans >= 1e8) return -1;
