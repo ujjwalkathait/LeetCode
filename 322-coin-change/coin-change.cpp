@@ -28,15 +28,15 @@ public:
             else prev[i] = 1e8;
         }
         for(int i=1; i<n; i++){
-            for(int j=0; j<= amount; j++){
+            for(int j=0; j<=amount; j++){
                 int notTake = prev[j];
                 int take = INT_MAX;
                 if(coins[i] <= j){
-                    take = 1 + curr[j - coins[i]];
+                    take = 1 + prev[j - coins[i]];
                 }
-                curr[j] = min(take, notTake);
+                prev[j] = min(take, notTake);
             }
-            prev = curr;
+            // prev = curr;
         }
         int ans = prev[amount];
         if(ans >= 1e8) return -1;
