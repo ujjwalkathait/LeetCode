@@ -17,26 +17,28 @@ public:
     }
     int coinChange(vector<int>& coins, int amount) {
         int n = coins.size();
-        vector<vector<int>> dp(n, vector<int>(amount+1, 0));
+        // vector<vector<int>> dp(n, vector<int>(amount+1, 0));
         // int ans = solve(n-1, coins, amount, dp);
         // if(ans >= 1e8) return -1;
         // return ans;
-
+        vector<int> prev(amount+1, 0);
+        vector<int> curr(amount+1, 0);
         for(int i=0; i<=amount; i++){
-            if(i % coins[0] == 0) dp[0][i] = i / coins[0];
-            else dp[0][i] = 1e8;
+            if(i % coins[0] == 0) prev[i] = i / coins[0];
+            else prev[i] = 1e8;
         }
         for(int i=1; i<n; i++){
-            for(int j=0; j<=amount; j++){
-                int notTake = dp[i-1][j];
+            for(int j=0; j<= amount; j++){
+                int notTake = prev[j];
                 int take = INT_MAX;
                 if(coins[i] <= j){
-                    take = 1 + dp[i][j - coins[i]];
+                    take = 1 + curr[j - coins[i]];
                 }
-                dp[i][j] = min(take, notTake);
+                curr[j] = min(take, notTake);
             }
+            prev = curr;
         }
-        int ans = dp[n-1][amount];
+        int ans = prev[amount];
         if(ans >= 1e8) return -1;
         return ans;
     }
