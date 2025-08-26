@@ -21,6 +21,7 @@ public:
             else{
                 r = mid-1;
             }
+            cout<<l<<" "<<r<<endl;
         }
         long long ans = 0;
         long long val = l;
@@ -29,11 +30,47 @@ public:
             ord -= (x - val);
             ans = (ans + (long long)(x+val+1)  * (x-val) / 2 % mod) % mod; 
         }
-        if(ord) ans = (ans + val * ord % mod) % mod; 
+        if(ord > 0) ans = (ans + val * ord % mod) % mod; 
         return ans;
     }
 };
 /*
 overflow hora hai ye
 dekhta hu
+chl gya
+achaa chii bhyii
+pr chla kaise
+vo bs simple
+how
+ab kaise batau
+ans = (ans + (long long)(x+val+1)  * (x-val) / 2 % mod) % mod; 
+ye ky hai
+ye hai sum(curr) - sum(k)
+
+jab ek AP ka sum nikalte hai to kaise nikalte hai
+sum of n terms = n/2 * [first_term + last_term];
+vahi hai bas
+
+
+for(auto x: in){
+            if(x <= val) break;
+            ord -= (x - val);
+            ans = (ans + (long long)(x+val+1)  * (x-val) / 2 % mod) % mod; 
+        }
+        
+        abe is loop mai agr ord negative hogya to
+    abe gadhe binary search isliye hi to lagai hai 
+    taaki k ki vo value mil jaye jiske liye orders pure ho
+    pure ho ya phir pure se jada ho na
+    
+    agar pure se jyada ho gye tab bhi to sahi haii
+    
+    kyu sahi hai tb to ans jada ho jayega
+    abeee kaise hoga
+    wait
+    
+    [8, 6, 3, 10] orders = 13
+    isliye liye dry run kar
+    wait
+
 */
