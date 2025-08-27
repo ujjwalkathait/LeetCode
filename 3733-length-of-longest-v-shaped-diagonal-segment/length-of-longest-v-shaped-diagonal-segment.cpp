@@ -4,8 +4,7 @@ public:
     unordered_map<int, int> nextDir = {{2, 3}, {3, 0}, {1, 2}, {0, 1}};
     // 0 - (topLeft) 1 - (topRight) 2 - (bottomRight) 3 - (bottomLeft)
     int solve(int i, int j, int d, vector<vector<int>>& grid, int num, bool check) {
-        if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size() ||
-            grid[i][j] == 1 || grid[i][j] != num) {
+        if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size() || grid[i][j] != num) {
             return 0;
         }
         int ans = 0;
