@@ -3,8 +3,8 @@ class Solution {
     // [0,0,0,0,1,2]]
     unordered_map<int,pair<int,int>> m;
     unordered_map<int,int> mapping;
-     vector<vector<int>> dir = {{-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
-    unordered_map<int, int> prevDir = {{2, 3}, {3, 0}, {1, 2}, {0, 1}};
+    vector<vector<int>> dir = {{-1, -1}, {-1, 1}, {1, 1}, {1, -1}};
+    vector<int> prevDir = {1,2,3,0};
     int solve(int i, int j, int k, bool check,
                                                 vector<vector<int>>& grid,int num) {
         if (i >= grid.size() || j >= grid[0].size() || i < 0 || j < 0)
@@ -13,7 +13,7 @@ class Solution {
         if (grid[i][j] == num) {
             ans = max(ans, 1 + solve(i+dir[k][0], j+dir[k][1], k, check, grid,num==2?0:2));
             if (check == 0) {
-                ans=max(ans,1+solve(i+dir[prevDir[k]][0],j+dir[prevDir[k]][1],prevDir[k],1,grid,num==2?0:2));
+                ans=max(ans,1+solve(i+dir[(k+1)%4][0],j+dir[(k+1)%4][1],(k+1)%4,1,grid,num==2?0:2));
             }
         }
         return ans;
