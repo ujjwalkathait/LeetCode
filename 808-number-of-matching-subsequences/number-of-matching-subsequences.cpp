@@ -9,7 +9,7 @@ public:
     }
     int numMatchingSubseq(string s, vector<string>& words) {
         int ans=0;
-        map<string, bool> mp;
+        unordered_map<string, bool> mp;
         for(auto i : words){ 
             if(mp.find(i) != mp.end()){
                 if(mp[i]){
