@@ -1,10 +1,9 @@
 class Solution {
 public:
     bool doesAliceWin(string s) {
-        unordered_set<char> v = {'a', 'e', 'i', 'o', 'u'};
         int ans = 0;
         for(auto ch: s){
-            if(v.find(ch) != v.end()){
+            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
                 ans++;
             }
         }
