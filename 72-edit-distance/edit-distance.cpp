@@ -8,7 +8,7 @@ public:
         }
 
         if(s[i] == t[j]){
-            return dp[i][j] = solve(i-1, j-1, s, t, dp);            
+            return solve(i-1, j-1, s, t, dp);            
         }
         int ins = 1 + solve(i, j-1, s, t, dp);
         int del = 1 + solve(i-1, j, s, t, dp);
