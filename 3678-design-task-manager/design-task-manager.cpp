@@ -42,12 +42,6 @@ public:
         return user; 
     }
 };
-//{2,102},{4,103},{4,104}
-/*
-{
-    101 : {}
-}
-*/
 /**
  * Your TaskManager object will be instantiated and called as such:
  * TaskManager* obj = new TaskManager(tasks);
