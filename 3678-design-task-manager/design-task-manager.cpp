@@ -1,20 +1,17 @@
 class TaskManager {
     unordered_map<int,pair<int,int>> taskToDetails;
-    unordered_map<int,int> taskToUser;// <taskId, userId>
     set<pair<int,int>> pq; // <priority,taskid>
     
 public:
     TaskManager(vector<vector<int>>& tasks) {
         for(int i = 0;i<tasks.size() ; i++){
             taskToDetails[tasks[i][1]] = {tasks[i][2],tasks[i][0]};
-            taskToUser[tasks[i][1]] = tasks[i][0];
             pq.insert({tasks[i][2],tasks[i][1]});
         }
     }
     
     void add(int userId, int taskId, int priority) {
         taskToDetails[taskId] = {priority,userId};
-        taskToUser[taskId] = userId;
         pq.insert({priority,taskId});
     }
     
@@ -31,13 +28,12 @@ public:
         int priority = taskToDetails[taskId].first;
         pq.erase({priority,taskId});
         taskToDetails.erase(taskId);
-        taskToUser.erase(taskId);
     }
     
     int execTop() {
         if(pq.size() == 0) return -1;
         pair<int, int> highest = *(pq.rbegin());
-        int user = taskToUser[highest.second];
+        int user = taskToDetails[highest.second].second;
         rmv(highest.second);
         return user; 
     }
