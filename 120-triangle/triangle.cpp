@@ -28,6 +28,6 @@ public:
             }
             next = curr;
         }
-        return curr[0];
+        return next[0];
     }
 };
