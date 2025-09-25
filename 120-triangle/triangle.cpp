@@ -17,15 +17,17 @@ public:
         // vector<vector<int>> dp(n, vector<int>(n, -1));
         // return solve(triangle, 0, 0, dp);
 
-        vector<vector<int>> dp(n + 1 , vector<int>(n + 1, 0));
+        vector<int> curr(n + 1, 0);
+        vector<int> next(n + 1, 0);
         for(int i=n-1; i>=0 ; i--){
             for(int j=i; j>=0; j--){
-                int same = triangle[i][j] + dp[i+1][j];
-                int next = triangle[i][j] + dp[i+1][j+1];
+                int same = triangle[i][j] + next[j];
+                int nex = triangle[i][j] + next[j+1];
 
-                dp[i][j] = min(same, next);
+                curr[j] = min(same, nex);
             }
+            next = curr;
         }
-        return dp[0][0];
+        return curr[0];
     }
 };
