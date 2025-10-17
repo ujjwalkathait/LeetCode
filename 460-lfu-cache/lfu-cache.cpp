@@ -48,7 +48,7 @@ public:
         curSize = 0;
     }
     void updateFreqList(Node *node){
-        keyNode.erase(node->key);
+        // keyNode.erase(node->key);
         freqList[node->cnt]->removeNode(node);
         if(node->cnt == minFreq && freqList[node->cnt]->size == 0){
             minFreq++;
@@ -60,7 +60,7 @@ public:
         node->cnt += 1;
         nextHigherFreqList->addFront(node);
         freqList[node->cnt] = nextHigherFreqList;
-        keyNode[node->key] = node;
+        // keyNode[node->key] = node;
     }
     int get(int key) {
         if(keyNode.find(key) != keyNode.end()){
