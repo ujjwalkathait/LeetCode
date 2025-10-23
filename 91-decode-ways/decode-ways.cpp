@@ -11,7 +11,18 @@ public:
         return dp[i] = ans;
     }
     int numDecodings(string s) {
-        vector<int> dp(s.size(), -1);
-        return solve(s, 0, s.size(), dp);
+        // vector<int> dp(s.size(), -1);
+        // return solve(s, 0, s.size(), dp);
+
+        int n = s.size();
+        vector<int> dp(n+1, 0);
+        dp[n] = 1;
+        for(int i=n-1; i>=0; i--){
+            if(s[i] == '0') continue;
+            int ans = dp[i+1];
+            if(i+1 < n && (s[i] == '1' || (s[i] == '2' && s[i+1] <= '6'))) ans += dp[i+2];
+            dp[i] = ans;
+        }
+        return dp[0];
     }
 };
