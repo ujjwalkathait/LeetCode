@@ -6,18 +6,16 @@ public:
             totalGas += gas[i];
             totalCost += cost[i];
         }
-        if(totalGas < totalCost){
-            return -1;
-        }
-        int ans = 0, currGas = 0;
+        if(totalCost > totalGas) return -1;
+        int currCost = 0;
+        int start = 0;
         for(int i=0; i<gas.size(); i++){
-            currGas += gas[i] - cost[i];
-
-            if(currGas < 0){
-                ans = i+1;
-                currGas = 0;
+            currCost += (gas[i] - cost[i]);
+            if(currCost < 0){
+                start = i+1;
+                currCost = 0;
             }
         }
-        return ans;
+        return start;
     }
 };
