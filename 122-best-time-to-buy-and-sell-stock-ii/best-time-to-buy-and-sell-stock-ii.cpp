@@ -36,22 +36,32 @@ public:
         // }
         // return dp[0][1];
 
-        vector<int> curr(2, 0);
-        vector<int> next(2, 0);
+        // vector<int> curr(2, 0);
+        // vector<int> next(2, 0);
 
-        for(int i=prices.size()-1; i>=0; i--){
-            for(int buy=0; buy<=1; buy++){
-                int profit = 0;
-                if(buy){
-                    profit = max((-prices[i] + next[0]), (next[1]));
-                }
-                else{
-                    profit = max((prices[i] + next[1]), (next[0]));
-                }
-                curr[buy] = profit;
+        // for(int i=prices.size()-1; i>=0; i--){
+        //     for(int buy=0; buy<=1; buy++){
+        //         int profit = 0;
+        //         if(buy){
+        //             profit = max((-prices[i] + next[0]), (next[1]));
+        //         }
+        //         else{
+        //             profit = max((prices[i] + next[1]), (next[0]));
+        //         }
+        //         curr[buy] = profit;
+        //     }
+        //     next = curr;
+        // }
+        // return next[1];
+
+
+        int n = prices.size();
+        int ans = 0;
+        for(int i=0; i<n-1; i++){
+            if(prices[i+1] > prices[i]){
+                ans += (prices[i+1] - prices[i]);
             }
-            next = curr;
         }
-        return next[1];
+        return ans;
     }
 };
