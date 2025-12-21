@@ -3,6 +3,8 @@ public:
     int minDeletionSize(vector<string>& strs) {
         int n = strs.size();
         int m = strs[0].size();
+
+        // resolved[i] indicates strs[i] < strs[i+1] is finalized
         vector<bool> resolved(n - 1, false);
         int unresolved = n - 1;
         int deletions = 0;
