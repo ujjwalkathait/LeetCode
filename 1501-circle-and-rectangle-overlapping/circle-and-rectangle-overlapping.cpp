@@ -12,7 +12,6 @@ public:
         int dis4 = distance(x4, y4, xCenter, yCenter);
         
         int r = radius * radius;
-        cout<<dis1<<" "<<dis2<<" "<<dis3<< " "<<dis4<< " "<<r;
         if (x1 <= xCenter && xCenter <= x2 && y1 <= yCenter && yCenter <= y2) {
             return true;
         }
@@ -29,6 +28,8 @@ public:
             return true;
         }
 
-        return (dis1 <= r) ? true : ((dis2 <= r) ? true : ((dis3 <= r) ? true : ((dis4 <= r) ? true : false)));
+        // return (dis1 <= r) ? true : ((dis2 <= r) ? true : ((dis3 <= r) ? true : ((dis4 <= r) ? true : false)));
+
+        return (dis1 <= r || dis2 <= r || dis3 <= r || dis4 <= r);
     }
 };
