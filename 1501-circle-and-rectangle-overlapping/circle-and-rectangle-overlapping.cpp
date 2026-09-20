@@ -27,8 +27,8 @@ public:
         if (y1 <= yCenter && yCenter <= y2 && x2 <= xCenter && xCenter <= x2 + radius) {
             return true;
         }
-
-        // return (dis1 <= r) ? true : ((dis2 <= r) ? true : ((dis3 <= r) ? true : ((dis4 <= r) ? true : false)));
+    
+        return (dis1 <= r) ? true : ((dis2 <= r) ? true : ((dis3 <= r) ? true : ((dis4 <= r) ? true : false)));
 
         return (dis1 <= r || dis2 <= r || dis3 <= r || dis4 <= r);
     }
